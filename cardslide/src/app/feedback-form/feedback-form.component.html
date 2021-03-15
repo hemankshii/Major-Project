@@ -1,0 +1,62 @@
+<div>
+    <mat-form-field>
+        <!-- <form [formGroup]="form" (ngSubmit)="addFed()">
+            <div>
+                    <ngx-input-star-rating formControlName="rating">
+                    </ngx-input-star-rating>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Add Feedback</label>
+                        <textarea  [(ngModel)]="data.animal" class="form-control" formControlName="feedback" rows="3"></textarea>
+                      </div>
+            </div>
+            </form> -->
+            <mat-label>Give Ratings</mat-label>
+        <input matInput [(ngModel)]="data.rating">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Add Feedback</mat-label>
+        <textarea matInput [(ngModel)]="data.feedback"></textarea>
+    </mat-form-field>
+</div>
+<div>
+    <button (click)="onNoClick()">No Thanks</button>
+    <button [mat-dialog-close]="data" cdkFocusInitial>Submit</button>
+</div>
+
+
+
+
+<!-- <div class="row">
+    <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-outline-primary shadow-lg p-3 mb-5 bg-white " type="button"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">Add feedback</button>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="addFed()">
+                <div class="modal-body">
+                        <ngx-input-star-rating formControlName="rating">
+                        </ngx-input-star-rating>
+                        <p> 
+                            {{value | async}}
+                        </p> 
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Add Feedback</label>
+                            <textarea class="form-control" formControlName="feedback" rows="3"></textarea>
+                          </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary" value="submit">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> -->

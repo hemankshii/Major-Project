@@ -1,0 +1,18 @@
+<p>pie-chart works!</p>
+
+<ng-container *ngIf='totalUsers.length!=0'>
+  <div class="chart-wrapper">
+      <canvas baseChart 
+      [data]="pieChartData" 
+      [labels]="pieChartLabels" 
+      [chartType]="pieChartType"
+      [options]="pieChartOptions"
+      [plugins]="pieChartPlugins"
+      [legend]="pieChartLegend">
+    </canvas>
+  </div>
+</ng-container>
+
+<ng-container *ngIf='totalUsers.length==0'>
+  No data Available
+</ng-container>

@@ -1,7 +1,26 @@
-<p>pie-chart works!</p>
+<form [formGroup]="chooseCategory">
 
-<ng-container *ngIf='totalUsers.length!=0'>
+  <div class="row">
+    <div class="col-lg-2">Select Category:</div>
+    <div class="col-lg-8">
+      <select formControlName="categoryName" ngModel='all' class="form-select" (change)="getCoursesByCat($event)">
+        <option value="all"> All</option>
+        <option *ngFor="let c of categories" [value]="c.categoryName"> {{c.categoryName}}</option>
+      </select>
+    </div>
+  </div><br>
+  <!-- <button (click)="getCoursesByCat()">Show graph</button> -->
+</form>
+
+<h1>{{this.chooseCategory.value.categoryName | uppercase}}</h1>
+
+<!-- <button (click)="getGraph()">Get Graph</button> -->
+
+<!-- *ngIf='totalUsers.length!=0' -->
+<!-- *ngIf='courseName?.length!=0 -->
+
   <div class="chart-wrapper">
+    <ng-container *ngIf='enrollments.length!=0; else unselected'>
       <canvas baseChart 
       [data]="pieChartData" 
       [labels]="pieChartLabels" 
@@ -10,9 +29,10 @@
       [plugins]="pieChartPlugins"
       [legend]="pieChartLegend">
     </canvas>
+  </ng-container>
+  <ng-template #unselected>
+    Select category from dropdown
+  </ng-template>
   </div>
-</ng-container>
+<hr>
 
-<ng-container *ngIf='totalUsers.length==0'>
-  No data Available
-</ng-container>

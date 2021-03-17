@@ -18,12 +18,15 @@ import { ChartsModule } from 'ng2-charts';
 import { PaginationComponent } from './pagination/pagination.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
+import { VideoChartComponent } from './video-chart/video-chart.component';
+import { CommentChartComponent } from './comment-chart/comment-chart.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     VideoDisplayComponent,  
-    FeedbackFormComponent, DeleteModalComponent, BarChartComponent, LineChartComponent, PieChartComponent, PaginationComponent
+    FeedbackFormComponent, DeleteModalComponent, BarChartComponent, LineChartComponent, PieChartComponent, PaginationComponent, VideoChartComponent, CommentChartComponent
   ],
   imports: [
     BrowserModule,

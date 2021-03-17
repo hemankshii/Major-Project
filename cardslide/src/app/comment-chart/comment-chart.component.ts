@@ -4,18 +4,16 @@ import { Label } from 'ng2-charts';
 import { HttpClient } from '@angular/common/http';
 import { AdminService } from '../admin.service';
 import { FormControl, FormGroup } from '@angular/forms';
-
 @Component({
-  selector: 'app-bar-chart',
-  templateUrl: './bar-chart.component.html',
-  styleUrls: ['./bar-chart.component.scss']
+  selector: 'app-comment-chart',
+  templateUrl: './comment-chart.component.html',
+  styleUrls: ['./comment-chart.component.scss']
 })
-
-export class BarChartComponent implements OnInit {
+export class CommentChartComponent implements OnInit {
 
   data: [];
   courseName: Array<string> = [];
-  likes = [];
+  totalcomment = [];
   chooseCategory: FormGroup
   selectedCategory: any;
   categories: any;
@@ -65,16 +63,16 @@ export class BarChartComponent implements OnInit {
 
   getGraph() {
     this.courseName = this.courses.map((data) => data.courseName);
-    this.likes = this.courses.map((data) => data.likes);
+    this.totalcomment = this.courses.map((data) => data.totalcomment);
     this.barChartLabels = this.courseName;
-    this.barChartData = [{ data: this.likes, label: ' Likes' }];
+    this.barChartData = [{ data: this.totalcomment, label: 'Total Comments' }];
   }
 
 
   getCoursesByCat(event: Event) {
 
     // let coursename: Array<string> = [];
-    // let likes: Array<number> = [];
+    // let totalcomment: Array<number> = [];
     this.selectedCategory = (<HTMLSelectElement>event.target).value;
     if (this.selectedCategory == 'all') {
       this.getGraph();
@@ -84,17 +82,17 @@ export class BarChartComponent implements OnInit {
       this.coursesByCat = this.courses?.filter((x: any) => { return x.category == this.selectedCategory });
       // this.coursesByCat?.forEach(element => {
       //   coursename.push(element.courseName);
-      //   likes.push(element.likes);
+      //   totalcomment.push(element.totalcomment);
       // });
 
       this.courseName = this.coursesByCat.map((data) => data.courseName);
-      this.likes = this.coursesByCat.map((data) => data.likes);
+      this.totalcomment = this.coursesByCat.map((data) => data.totalcomment);
 
       // this.courseName = coursename;
-      // this.likes = likes;
+      // this.totalcomment = totalcomment;
 
       this.barChartLabels = this.courseName;
-      this.barChartData = [{ data: this.likes, label: 'Likes' }];
+      this.barChartData = [{ data: this.totalcomment, label: 'Total Comments' }];
     }
   }
 }

@@ -5,14 +5,13 @@ import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsToolt
 import { AdminService } from '../admin.service';
 
 @Component({
-  selector: 'app-pie-chart',
-  templateUrl: './pie-chart.component.html',
-  styleUrls: ['./pie-chart.component.scss']
+  selector: 'app-video-chart',
+  templateUrl: './video-chart.component.html',
+  styleUrls: ['./video-chart.component.scss']
 })
-
-export class PieChartComponent implements OnInit {
+export class VideoChartComponent implements OnInit {
   courseName: Array<string> = [];
-  enrollments = [];
+  videosize = [];
   chooseCategory: FormGroup
   selectedCategory: any;
   categories: any;
@@ -60,11 +59,11 @@ export class PieChartComponent implements OnInit {
 
   getGraph() {
     this.courseName = this.courses.map((data) => data.courseName);
-    this.enrollments = this.courses.map((data) => data.enrollments);
-    console.log(this.enrollments);
+    this.videosize = this.courses.map((data) => data.videosize);
+    console.log(this.videosize);
     
     this.pieChartLabels = this.courseName;
-    this.pieChartData = this.enrollments;
+    this.pieChartData = this.videosize;
   }
 
   getCoursesByCat(event: Event) {
@@ -77,14 +76,15 @@ export class PieChartComponent implements OnInit {
       console.log(this.coursesByCat);
       
       this.courseName = this.coursesByCat.map((data) => data.courseName);
-      this.enrollments = this.coursesByCat.map((data) => data.enrollments);
-      console.log(this.enrollments);
+      this.videosize = this.coursesByCat.map((data) => data.videosize);
+      console.log(this.videosize);
       
       this.pieChartLabels = this.courseName;
-      this.pieChartData =  this.enrollments;
+      this.pieChartData =  this.videosize;
 
     }
   }
+
 
 
 }

@@ -1,11 +1,29 @@
-<p>bar-chart works!</p>
+<form [formGroup]="chooseCategory">
+
+  <div class="row">
+    <div class="col-lg-2">Select Category:</div>
+    <div class="col-lg-8">
+      <select formControlName="categoryName" ngModel='all' class="form-select" (change)="getCoursesByCat($event)">
+        <option value="all"> All</option>
+        <option *ngFor="let c of categories" [value]="c.categoryName"> {{c.categoryName}}</option>
+      </select>
+    </div>
+  </div><br>
+  <!-- <button (click)="getCoursesByCat()">Show graph</button> -->
+</form>
+
+<h1>{{this.chooseCategory.value.categoryName | uppercase}}</h1>
+
+<!-- <button (click)="getGraph()">Get Graph</button> -->
+
 <div class="chart-wrapper">
-    <canvas baseChart 
-    [datasets]="barChartData"
-    [labels]="barChartLabels"
-    [options]="barChartOptions"
-    [plugins]="barChartPlugins"
-    [legend]="barChartLegend"
-    [chartType]="barChartType">
-  </canvas>
+  <ng-container *ngIf='courseName?.length!=0; else unselected'>
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+      [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+  </ng-container>
+  <ng-template #unselected>
+    Select category from dropdown
+  </ng-template>
 </div>
+<hr>
